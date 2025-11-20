@@ -14,8 +14,6 @@
 - [Features](#features)
 - [Architecture](#architecture)
 - [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
 - [Knowledge Base](#knowledge-base)
 - [API Reference](#api-reference)
 - [Security](#security)
