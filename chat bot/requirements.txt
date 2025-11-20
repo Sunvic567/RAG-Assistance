@@ -1,0 +1,38 @@
+# Environment
+python-dotenv>=1.0.0
+
+# LangChain core + helper packages
+langchain>=0.0.300
+langchain-text-splitters>=0.0.10
+langchain-community>=0.0.10
+
+# LangChain integrations (names may vary by release; see notes)
+langchain-huggingface>=0.0.10
+
+# Google GenAI official client (optional / alternative)
+google-generative-ai>=1.0.0
+
+# Hugging Face / embeddings
+torch>=1.13.1
+transformers>=4.30.0
+sentence-transformers>=2.2.2
+huggingface-hub>=0.17.0
+accelerate>=0.20.0
+pinecone>=2.2.1
+
+# PostgreSQL / pgvector
+psycopg[binary]>=3.1.0
+psycopg_pool>=1.0.0
+pgvector>=0.7.0
+
+#use this SQL to create the memory table in your Postgres database
+create table agent_memory (
+    id uuid primary key default uuid_generate_v4(),
+    session_id text not null,
+    role text not null,              -- "user" or "assistant"
+    message text,                    -- original message
+    pinecone_id text,                -- optional: link to pinecone chunk
+    created_at timestamptz default now()
+);
+
+create index agent_memory_session_idx on agent_memory(session_id);
